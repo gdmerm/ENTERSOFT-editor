@@ -25,8 +25,9 @@
 </head>
 <body>
     
-    <button onclick="console.log(ESPluginBridge.invoke('content', 'getContent'))">Get Html</button>
-    <button onclick="console.log(ESPluginBridge.invoke('content', 'getPlainText'))">Get Text</button>
+    <button onclick="console.log(ESPluginBridge('getContent'))">Get Html</button>
+    <button onclick="console.log(ESPluginBridge('getPlainText'))">Get Text</button>
+    <button onclick="ESPluginBridge('setContent', 'hello george')">Set content</button>
 
     <div id="page">        
         <textarea id="content" name="content">

@@ -1,5 +1,5 @@
 /**
- * @module ESPluginBridge
+ * @module {function} ESPluginBridge
  * Entersoft API using Redactor module encapsulation.
  */
 var ESPluginBridge = (function (RD, console) {
@@ -25,20 +25,34 @@ var ESPluginBridge = (function (RD, console) {
      * @param  {string} elementId The textarea id where redactor is called
      */
     ESPlugin.getInstance = function (elementId) {
+        if (_pluginInstances.length === 1) {
+            return _pluginInstances[0];
+        }
+
         return _pluginInstances.filter(function (element) {
             return element.attr('id') === elementId;
         })[0];
     };
 
     /**
-     * @static invoke()
+     * @static invokeMethod()
      * call the $().redactor('ESPlugin.methodName', args) method
      * @param  {[type]} elementId  [description]
      * @param  {[type]} methodName [description]
      * @param  {[type]} args       [description]
      */
-    ESPlugin.invoke = function (elementId, methodName, args) {
+    ESPlugin.invokeMethod = function (elementId, methodName, args) {
         return ESPlugin.getInstance(elementId).redactor('ESPlugin.' + methodName, args);
+    };
+
+    /**
+     * @static invoke
+     * similar to invokeMethod() but short-circuits to first instance (ommit the elementId for single editor environments)
+     * @param  {[type]} methodName [description]
+     * @param  {[type]} args       [description]
+     */
+    ESPlugin.invoke = function (methodName, args) {
+        return ESPlugin.getInstance().redactor('ESPlugin.' + methodName, args);
     };
 
     /**
@@ -52,10 +66,10 @@ var ESPluginBridge = (function (RD, console) {
          */
         this.interfaceButtons = [
             {
-                name: 'plaintextbutton',
-                label: 'Get Plain Text',
-                faclass: 'fa-tasks',
-                callbackName: 'getPlainText'
+                name: 'getHtmlButton',
+                label: 'Get Html',
+                faclass: 'fa-html5',
+                callbackName: 'getContent'
             }
         ];
 
@@ -142,6 +156,7 @@ var ESPluginBridge = (function (RD, console) {
          * @return {string} The raw html content
          */
         getContent: function getHtml() {
+            this.ESPlugin.log(this.code.get());
             return this.code.get();
         },
 
@@ -160,10 +175,21 @@ var ESPluginBridge = (function (RD, console) {
     //Pass the plugin factory method to redactor
     RD.ESPlugin = ESPlugin.create;
 
-    //expose public api here
-    return {
-        listInstances: ESPlugin.getInstances,
-        invoke: ESPlugin.invoke
+    /**
+     * @function  ESPluginBridge()
+     * calls invoke() if arguments are passed or returns a public API
+     * if no arguments are passed.
+     */
+    return function ESPluginBridge() {
+        if (arguments.length > 0) {
+            return ESPlugin.invoke.apply(this, arguments);
+        } else {
+            return {
+                listInstances: ESPlugin.getInstances,
+                invoke: ESPlugin.invoke,
+                invokeMethod: ESPlugin.invokeMethod
+            };
+        }
     };
 
 })(RedactorPlugins || {}, console);
