@@ -1,0 +1,4 @@
+[
+	{ "title": "Some Image", "name": "1.jpg", "link": "/images/1.jpg", "size": "301Kb"  },
+    { "title": "My Book", "name": "my-book.pdf", "link": "/files/my-book.pdf", "size": "1MB"  }
+]
