@@ -17,6 +17,7 @@
     <script src="lib/redactor/plugins/fontsize.js"></script>
     <script src="lib/redactor/plugins/fontfamily.js"></script>
     <script src="lib/redactor/plugins/fontcolor.js"></script>   
+    <script src="plugins/servershim.js"></script>
     <script src="plugins/esplugin.js"></script>
 </head>
 <body>
@@ -38,6 +39,9 @@
 
     <script type="text/javascript">    
     $(function() {
+
+        ESServerShim.mockMethods();
+
         $('#content').redactor({
             imageUpload: 'modules/image-upload.php',
             imageManagerJson: 'data/images.json',
