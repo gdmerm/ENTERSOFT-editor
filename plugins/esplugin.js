@@ -11,6 +11,11 @@ var ESPluginBridge = (function (RD, console, window) {
      */
     var _pluginInstances = [];
 
+    /**
+     * @static create
+     * factory method passed to RedactorPlugins object. 
+     * Redactor uses this method internaly to obtain the plugin object.
+     */
     ESPlugin.create = function () {
         return new ESPlugin(console);
     };
@@ -110,6 +115,9 @@ var ESPluginBridge = (function (RD, console, window) {
 
         //inject window.console
         this.console = console;
+
+        //track if editor is dirty
+        this.editorDirty = false;
 
         //reference this method so it can be used from instance objects
         this.invokeServerMethod = ESPlugin.invokeServerMethod;
@@ -212,6 +220,15 @@ var ESPluginBridge = (function (RD, console, window) {
          */
         setContent: function setContent(content) {
             this.code.set(content);
+        },
+
+        /**
+         * @callback checkDirty
+         * informs whether editor is dirty
+         * @return {boolean}
+         */
+        checkDirty: function () {
+            return this.ESPlugin.editorDirty;
         }
 
     }; //ESPlugin prototype methods
