@@ -96,6 +96,15 @@ var ESPluginBridge = (function (RD, console, window) {
                     ESPlugin.invokeServerMethod('Hello', 'Alex');
                 },
                 enabled: false
+            }, 
+            {
+                name: 'saveContentsButton',
+                label: 'Save',
+                faclass: 'fa-save',
+                serverMethod: function () {
+                    ESPlugin.invokeServerMethod('Save');
+                },
+                enabled: false
             }
         ];
 

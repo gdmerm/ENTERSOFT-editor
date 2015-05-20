@@ -17,6 +17,14 @@ var ESServerShim = (function ($) {
 
         GetImages: function() {
             return '[{"thumb": "/redactor/data/images/1.jpg", "image": "/redactor/data/images/1.jpg", "title": "1"}, {"thumb": "/redactor/data/images/2.jpg", "image": "/redactor/data/images/2.jpg", "title": "2"}, {"thumb": "/redactor/data/images/3.jpg", "image": "/redactor/data/images/3.jpg", "title": "3"}]'
+        },
+
+        Upload: function() {
+            console.log('calling upload dialog');
+        },
+
+        Save: function() {
+            console.log('saving...\n\n', ESPluginBridge('getPlainText'));
         }
     }
 
