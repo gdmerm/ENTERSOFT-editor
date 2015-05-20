@@ -1,6 +1,7 @@
 /**
  * @module {function} ESPluginBridge
  * Entersoft API using Redactor module encapsulation.
+ * @returns {function}
  */
 var ESPluginBridge = (function (RD, console, window) {
 
@@ -67,9 +68,12 @@ var ESPluginBridge = (function (RD, console, window) {
      */
     ESPlugin.invokeServerMethod = function (methodName, params) {
         try {
-            return window.external[methodName](params);
+            return (arguments.length > 1) ?
+                window.external[methodName](params) :
+                window.external[methodName]();
+
         } catch(e) {
-            window.alert('No method `' + arguments[0] + '()` is registered on the server');
+            window.alert(e);
         }
     };
 
@@ -90,7 +94,8 @@ var ESPluginBridge = (function (RD, console, window) {
                 //callbackName: 'getContent',
                 serverMethod: function () {
                     ESPlugin.invokeServerMethod('Hello', 'Alex');
-                }
+                },
+                enabled: false
             }
         ];
 
@@ -131,7 +136,9 @@ var ESPluginBridge = (function (RD, console, window) {
 
                 for (var i = 0,_len = _plugin.interfaceButtons.length; i<_len; i++) {
                     buttonConfig = _plugin.interfaceButtons[i];
-                    _plugin._addEditorButton.call(redactorInstance, buttonConfig);
+                    if (buttonConfig.enabled) {
+                        _plugin._addEditorButton.call(redactorInstance, buttonConfig);
+                    }
                 }
             }
         };
