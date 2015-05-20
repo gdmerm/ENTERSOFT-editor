@@ -4,16 +4,76 @@
 		"selected_items":
 		[
 			[
+				"server",
+				"serverMethod"
+			],
+			[
+				"invoke",
+				"invokeServerMethod"
+			],
+			[
+				"inv",
+				"invokeServerMethod"
+			],
+			[
+				"ES",
+				"ESPlugin"
+			],
+			[
+				"ESPl",
+				"ESPluginBridge"
+			],
+			[
+				"method",
+				"methodName"
+			],
+			[
+				"bower",
+				"bower_components/jQuery/dist/jquery.min.js"
+			],
+			[
+				"get",
+				"getInstance"
+			],
+			[
+				"element",
+				"elementId"
+			],
+			[
+				"_pl",
+				"_pluginInstances"
+			],
+			[
+				"_",
+				"_pluginInstances"
+			],
+			[
+				"redactor",
+				"redactorInstance"
+			],
+			[
+				"_add",
+				"_addEditorButton"
+			],
+			[
+				"button",
+				"buttonConfig"
+			],
+			[
+				"redac",
+				"redactorInstance"
+			],
+			[
+				"text",
+				"textarea"
+			],
+			[
 				"remove",
 				"removeSelection"
 			],
 			[
 				"selected",
 				"selectedOption"
-			],
-			[
-				"get",
-				"gettext"
 			],
 			[
 				"dere",
@@ -252,10 +312,6 @@
 				"_cacheReadyDefer"
 			],
 			[
-				"_",
-				"_cacheReady"
-			],
-			[
 				"form",
 				"formFieldsModel"
 			],
@@ -380,10 +436,6 @@
 				"background-color"
 			],
 			[
-				"text",
-				"text-align"
-			],
-			[
 				"customer-",
 				"customer-list"
 			],
@@ -431,6 +483,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "plugins/esplugin.js",
+			"settings":
+			{
+				"buffer_size": 6876,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 5265,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -439,10 +507,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 77.0,
-		"last_filter": "",
+		"height": 140.0,
+		"last_filter": "install",
 		"selected_items":
 		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
 			[
 				"forma",
 				"Format: Javascript"
@@ -464,10 +536,6 @@
 				"HTMLBeautify"
 			],
 			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
 				"remove",
 				"Package Control: Remove Package"
 			],
@@ -480,7 +548,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 467.0
+		"width": 575.0
 	},
 	"console":
 	{
@@ -501,10 +569,13 @@
 	},
 	"expanded_folders":
 	[
-		"/var/www/html/redactor"
+		"/var/www/html/redactor",
+		"/var/www/html/redactor/plugins"
 	],
 	"file_history":
 	[
+		"/var/www/html/redactor/app.js",
+		"/home/gm/.config/sublime-text-3/Packages/Terminal/Terminal.sublime-settings",
 		"/var/www/html/loreal/app/customers/customer-form.controller.js",
 		"/var/www/html/loreal/app/main/directives/esui-select/esui-select-keyboard-navigator.js",
 		"/var/www/html/loreal/app/main/directives/esui-select/esui-select.js",
@@ -615,6 +686,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"plugins",
+			"esplugin",
+			"ESPlugin",
 			"removeselec",
 			"selectedoption",
 			"displaylabel",
@@ -739,10 +813,7 @@
 			"updatesettings",
 			"updateSettings",
 			"defaultSettings",
-			"templatePath",
-			"factory",
-			"service",
-			"checkvalidation"
+			"templatePath"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -766,8 +837,67 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "plugins/esplugin.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6876,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2061,
+								2061
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1326.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5265,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								106,
+								106
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -820,6 +950,14 @@
 		"selected_items":
 		[
 			[
+				"indexhtml",
+				"index.html"
+			],
+			[
+				"index",
+				"index.html"
+			],
+			[
 				"transla",
 				"app/translations/translations.js"
 			],
@@ -870,10 +1008,6 @@
 			[
 				"templatejs",
 				"app/main/services/template.js"
-			],
-			[
-				"indexhtml",
-				"app/index.html"
 			],
 			[
 				"esui",
@@ -1086,10 +1220,6 @@
 			[
 				"client.js",
 				"app/main/services/entersoft-client.js"
-			],
-			[
-				"index",
-				"app/index.html"
 			],
 			[
 				"grunt",

@@ -2,8 +2,12 @@
  * @module {function} ESPluginBridge
  * Entersoft API using Redactor module encapsulation.
  */
-var ESPluginBridge = (function (RD, console) {
+var ESPluginBridge = (function (RD, console, window) {
 
+    /**
+     * [_pluginInstances description]
+     * @type {Array}
+     */
     var _pluginInstances = [];
 
     ESPlugin.create = function () {
@@ -56,6 +60,20 @@ var ESPluginBridge = (function (RD, console) {
     };
 
     /**
+     * @static invokeServerMethod
+     * call a windows .NET method / subprocedure
+     * @param  {methodName} methodName The signature name of the server side method
+     * @param {string|number|object} params Optional parameters that can be sent to the server
+     */
+    ESPlugin.invokeServerMethod = function (methodName, params) {
+        try {
+            return window.external[methodName](params);
+        } catch(e) {
+            window.alert('No method `' + arguments[0] + '()` is registered on the server');
+        }
+    };
+
+    /**
      * @class ESPlugin
      */
     function ESPlugin(console) {
@@ -66,15 +84,21 @@ var ESPluginBridge = (function (RD, console) {
          */
         this.interfaceButtons = [
             {
-                name: 'getHtmlButton',
-                label: 'Get Html',
-                faclass: 'fa-html5',
-                callbackName: 'getContent'
+                name: 'getImageListButton',
+                label: 'List Images',
+                faclass: 'fa-photo',
+                //callbackName: 'getContent',
+                serverMethod: function () {
+                    ESPlugin.invokeServerMethod('Hello', 'Alex');
+                }
             }
         ];
 
         //inject window.console
         this.console = console;
+
+        //reference this method so it can be used from instance objects
+        this.invokeServerMethod = ESPlugin.invokeServerMethod;
 
         /**
          * update the list of active instances that use the plugin
@@ -118,7 +142,11 @@ var ESPluginBridge = (function (RD, console) {
         _addEditorButton: function _addEditorButton(buttonConfig) {
             var button = this.button.add(buttonConfig.name, buttonConfig.label);
             this.button.setAwesome(buttonConfig.name, buttonConfig.faclass);
-            this.button.addCallback(button, this.ESPlugin[buttonConfig.callbackName]);
+            if (buttonConfig.serverMethod) {
+                this.button.addCallback(button, buttonConfig.serverMethod);
+            } else {
+                this.button.addCallback(button, this.ESPlugin[buttonConfig.callbackName]);
+            }
         },
 
         /**
@@ -186,10 +214,11 @@ var ESPluginBridge = (function (RD, console) {
         } else {
             return {
                 listInstances: ESPlugin.getInstances,
-                invoke: ESPlugin.invoke,
-                invokeMethod: ESPlugin.invokeMethod
+                client: ESPlugin.invoke,
+                invokeMethod: ESPlugin.invokeMethod,
+                server: ESPlugin.invokeServerMethod
             };
         }
     };
 
-})(RedactorPlugins || {}, console);
+})(RedactorPlugins || {}, console, window);

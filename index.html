@@ -5,12 +5,11 @@
         
     <meta charset="utf-8"> 
 
-    <script src="lib/jquery-2.1.4.min.js"></script>
-
     <link rel="stylesheet" href="lib/redactor/redactor.css" />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <script src="lib/redactor/redactor.min.js"></script>
 
+    <script src="bower_components/jQuery/dist/jquery.min.js"></script>
+    <script src="lib/redactor/redactor.min.js"></script>
     <script src="lib/redactor/plugins/table.js"></script>
     <script src="lib/redactor/plugins/video.js"></script>
     <script src="lib/redactor/plugins/imagemanager.js"></script>
@@ -18,17 +17,10 @@
     <script src="lib/redactor/plugins/fontsize.js"></script>
     <script src="lib/redactor/plugins/fontfamily.js"></script>
     <script src="lib/redactor/plugins/fontcolor.js"></script>   
-
     <script src="plugins/esplugin.js"></script>
-    <script src="app.js"></script>
-
 </head>
 <body>
     
-    <button onclick="console.log(ESPluginBridge('getContent'))">Get Html</button>
-    <button onclick="console.log(ESPluginBridge('getPlainText'))">Get Text</button>
-    <button onclick="ESPluginBridge('setContent', 'hello george')">Set content</button>
-
     <div id="page">        
         <textarea id="content" name="content">
             <h2>Please, scroll down</h2>
@@ -48,7 +40,7 @@
     $(function() {
         $('#content').redactor({
             imageUpload: 'modules/image-upload.php',
-            imageManagerJson: 'json/data.json',
+            imageManagerJson: 'data/images.json',
             fileUpload: 'modules/file-upload.php',
             fileManagerJson: 'json/data.json',
             plugins: ['table', 'video', 'imagemanager', 'filemanager', 'fontsize', 'fontfamily', 'fontcolor', 'ESPlugin']
