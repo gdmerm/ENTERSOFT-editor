@@ -1,4 +1,4 @@
-*,sublime-workspace
+*.sublime-workspace
 *.sublime-project
 bower_components
 jspm_packages

@@ -15,7 +15,7 @@
     <script src="lib/redactor/redactor.min.js"></script>
     <script src="lib/redactor/plugins/table.js"></script>
     <script src="lib/redactor/plugins/video.js"></script>
-    <script src="lib/redactor/plugins/imagemanager.js"></script>
+    <script src="lib/redactor/plugins/esimagemanager.js"></script>
     <script src="lib/redactor/plugins/filemanager.js"></script>
     <script src="lib/redactor/plugins/fontsize.js"></script>
     <script src="lib/redactor/plugins/fontfamily.js"></script>
@@ -54,7 +54,7 @@
             changeCallback: function () {
                 this.ESPlugin.editorDirty = true;
             },
-            plugins: ['table', 'video', 'esImageManager', 'filemanager', 'fontsize', 'fontfamily', 'fontcolor', 'ESPlugin']
+            plugins: ['table', 'video', 'esImageManager', 'esFileManager', 'fontsize', 'fontfamily', 'fontcolor', 'ESPlugin']
         });
     });
     </script>

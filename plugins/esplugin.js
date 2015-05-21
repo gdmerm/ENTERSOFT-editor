@@ -78,7 +78,7 @@ var ESPluginBridge = (function (RD, console, window) {
                 window.external[methodName]();
 
         } catch(e) {
-            window.alert(e);
+            return window.alert(e);
         }
     };
 
