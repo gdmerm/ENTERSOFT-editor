@@ -31,6 +31,10 @@ var ESServerShim = (function ($) {
 
         GetFiles: function () {
             return '[{ "title": "EBS Manual", "name": "1.jpg", "link": "/images/1.jpg", "size": "13MB"  }, { "title": "Kamasutra", "name": "my-book.pdf", "link": "/files/my-book.pdf", "size": "4MB"  }]';
+        },
+
+        GetStyles: function () {
+            return '[{"tag": "span", "title": "Out of stock", "class": "out-of-stock"}, {"tag": "span", "title": "In stock", "class": "in-stock"}, {"tag": "p", "title": "section title", "class": "section-title"}]';
         }
     };
 

@@ -1,0 +1,15 @@
+.out-of-stock,
+.redactor-dropdown .redactor-formatting-span-out-of-stock {
+    color:#cc0000;
+    text-decoration: line-through;
+}
+
+.in-stock,
+.redactor-dropdown .redactor-formatting-span-in-stock {
+    color: green;
+}
+
+.section-title,
+.redactor-dropdown .redactor-formatting-p-section-title {
+    font-weight:700;
+}

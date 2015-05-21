@@ -76,9 +76,8 @@ var ESPluginBridge = (function (RD, console, window) {
             return (arguments.length > 1) ?
                 window.external[methodName](params) :
                 window.external[methodName]();
-
         } catch(e) {
-            return window.alert(e);
+            return window.alert('no method `' + methodName + '` is registered on server');
         }
     };
 
@@ -163,6 +162,11 @@ var ESPluginBridge = (function (RD, console, window) {
 
     ESPlugin.prototype = {
 
+        /**
+         * @private
+         * adds buttons on the editor instance
+         * @param {object} buttonConfig The configuration on `this.interfaceButtons`
+         */
         _addEditorButton: function _addEditorButton(buttonConfig) {
             var button = this.button.add(buttonConfig.name, buttonConfig.label);
             this.button.setAwesome(buttonConfig.name, buttonConfig.faclass);
