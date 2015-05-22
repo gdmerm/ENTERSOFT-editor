@@ -1,0 +1,84 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'grunt-contrib-filerev' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.38
+4 verbose node symlink /usr/bin/node
+5 verbose cache add [ 'grunt-contrib-filerev', null ]
+6 verbose cache add name=undefined spec="grunt-contrib-filerev" args=["grunt-contrib-filerev",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'grunt-contrib-filerev',
+7 verbose parsed url   path: 'grunt-contrib-filerev',
+7 verbose parsed url   href: 'grunt-contrib-filerev' }
+8 silly lockFile cc4c988f-grunt-contrib-filerev grunt-contrib-filerev
+9 verbose lock grunt-contrib-filerev /home/gm/.npm/cc4c988f-grunt-contrib-filerev.lock
+10 silly lockFile cc4c988f-grunt-contrib-filerev grunt-contrib-filerev
+11 silly lockFile cc4c988f-grunt-contrib-filerev grunt-contrib-filerev
+12 verbose addNamed [ 'grunt-contrib-filerev', '' ]
+13 verbose addNamed [ null, '*' ]
+14 silly lockFile 23e154aa-grunt-contrib-filerev grunt-contrib-filerev@
+15 verbose lock grunt-contrib-filerev@ /home/gm/.npm/23e154aa-grunt-contrib-filerev.lock
+16 silly addNameRange { name: 'grunt-contrib-filerev', range: '*', hasData: false }
+17 verbose request where is /grunt-contrib-filerev
+18 verbose request registry https://registry.npmjs.org/
+19 verbose request id fb7ce0d1381a4799
+20 verbose url raw /grunt-contrib-filerev
+21 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-contrib-filerev' ]
+22 verbose url resolved https://registry.npmjs.org/grunt-contrib-filerev
+23 verbose request where is https://registry.npmjs.org/grunt-contrib-filerev
+24 info trying registry request attempt 1 at 15:35:00
+25 http GET https://registry.npmjs.org/grunt-contrib-filerev
+26 http 404 https://registry.npmjs.org/grunt-contrib-filerev
+27 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 verbose headers   'content-type': 'application/json',
+27 verbose headers   'cache-control': 'max-age=0',
+27 verbose headers   'content-length': '51',
+27 verbose headers   'accept-ranges': 'bytes',
+27 verbose headers   date: 'Fri, 22 May 2015 12:35:01 GMT',
+27 verbose headers   via: '1.1 varnish',
+27 verbose headers   age: '0',
+27 verbose headers   connection: 'keep-alive',
+27 verbose headers   'x-served-by': 'cache-fra1226-FRA',
+27 verbose headers   'x-cache': 'MISS',
+27 verbose headers   'x-cache-hits': '0',
+27 verbose headers   'x-timer': 'S1432298101.260271,VS0,VE109' }
+28 silly registry.get cb [ 404,
+28 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+28 silly registry.get     'content-type': 'application/json',
+28 silly registry.get     'cache-control': 'max-age=0',
+28 silly registry.get     'content-length': '51',
+28 silly registry.get     'accept-ranges': 'bytes',
+28 silly registry.get     date: 'Fri, 22 May 2015 12:35:01 GMT',
+28 silly registry.get     via: '1.1 varnish',
+28 silly registry.get     age: '0',
+28 silly registry.get     connection: 'keep-alive',
+28 silly registry.get     'x-served-by': 'cache-fra1226-FRA',
+28 silly registry.get     'x-cache': 'MISS',
+28 silly registry.get     'x-cache-hits': '0',
+28 silly registry.get     'x-timer': 'S1432298101.260271,VS0,VE109' } ]
+29 silly lockFile 23e154aa-grunt-contrib-filerev grunt-contrib-filerev@
+30 silly lockFile 23e154aa-grunt-contrib-filerev grunt-contrib-filerev@
+31 error 404 404 Not Found: grunt-contrib-filerev
+31 error 404
+31 error 404 'grunt-contrib-filerev' is not in the npm registry.
+31 error 404 You should bug the author to publish it
+31 error 404
+31 error 404 Note that you can also install from a
+31 error 404 tarball, folder, or http url, or git url.
+32 error System Linux 3.16.0-38-generic
+33 error command "/usr/bin/node" "/usr/bin/npm" "install" "grunt-contrib-filerev"
+34 error cwd /var/www/html/redactor
+35 error node -v v0.10.38
+36 error npm -v 1.4.28
+37 error code E404
+38 verbose exit [ 1, true ]
