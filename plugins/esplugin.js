@@ -109,6 +109,13 @@ var ESPluginBridge = (function (RD, console, window) {
                     ESPlugin.invokeServerMethod('Save');
                 },
                 enabled: false
+            },
+            {
+                name: 'printbutton',
+                label: 'print',
+                faclass: 'fa-print',
+                callbackName: 'spawnPrintDialog',
+                enabled: true
             }
         ];
 
@@ -143,6 +150,8 @@ var ESPluginBridge = (function (RD, console, window) {
             _addPluginInstance(this.$textarea);
             //add editor buttons
             _addButtons();
+            //handle some keyboard shortcuts
+            _plugin.handleKeyboard();
 
             /**
              * add buttons defined in `this.interfaceButtons`
@@ -185,6 +194,24 @@ var ESPluginBridge = (function (RD, console, window) {
         log: function log() {
             if (this.console) {
                 this.console.log( Array.prototype.slice.call(arguments) );
+            }
+        },
+
+        /**
+         * catches some keyboard strokes and cancels or otherwise adds extra handling
+         */
+        handleKeyboard: function () {
+            disableF5();
+
+            function disableF5() {
+                if (window.external.AddSearchProvider) return;
+                $(document).on('keydown', function (e) {
+                    var code = e.which || e.keyCode;
+                    if (code === 116) {
+                        e.preventDefault();
+                        return;
+                    }
+                });
             }
         },
 
@@ -233,6 +260,14 @@ var ESPluginBridge = (function (RD, console, window) {
          */
         checkDirty: function () {
             return this.ESPlugin.editorDirty;
+        },
+
+        /**
+         * @callback spawnPrintDialog
+         * calls the native OS print dialog
+         */
+        spawnPrintDialog: function printDialog() {
+            return window.print(); 
         }
 
     }; //ESPlugin prototype methods
