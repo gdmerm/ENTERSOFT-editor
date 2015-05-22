@@ -7,4 +7,14 @@
         overflow: visible !important;
         height: auto !important;
     }
+
+    .redactor-box-fullscreen {
+        height: auto !important;
+        position: static !important;
+        overflow: scroll !important;
+    }
+
+    body {
+        overflow: visible !important;
+    }
 }

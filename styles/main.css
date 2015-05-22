@@ -8,3 +8,7 @@
 #redactor-file-manager-box > ul:first-child {
     margin-top:20px;
 }
+
+.print-container {
+    display:none;
+}
