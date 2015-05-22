@@ -2,4 +2,9 @@
     .redactor-toolbar {
         display:none;
     }
+
+    .redactor-editor {
+        overflow: visible !important;
+        height: auto !important;
+    }
 }
