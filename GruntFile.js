@@ -5,6 +5,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-filerev');
+    //grunt.loadNpmTasks('grunt-exec');
 
     grunt.initConfig({
         /**
@@ -48,10 +49,11 @@ module.exports = function(grunt) {
                     'dist/scripts/build.js': [
                         "bower_components/jQuery/dist/jquery.min.js",
                         "bower_components/toastr/toastr.min.js",
-                        "lib/redactor/redactor.min.js",
+                        "lib/redactor/redactor.js",
                         "lib/redactor/plugins/table.js",
                         "lib/redactor/plugins/video.js",
                         "lib/redactor/plugins/esimagemanager.js",
+                        "lib/redactor/plugins/esimageedit.js",
                         "lib/redactor/plugins/filemanager.js",
                         "lib/redactor/plugins/fontsize.js",
                         "lib/redactor/plugins/fontfamily.js",
@@ -79,13 +81,19 @@ module.exports = function(grunt) {
             indexFile: {
                 options: {
                     process: function (content, srcpath) {
-                        console.log(grunt.filerev.summary);
                         var stringToReplace; 
+                        /*
                         var js = 
                             '<script src="' + grunt.filerev.summary['dist/scripts/build.js'].replace('dist/', '') + '"></script>\n';
                         var css = 
                             '<link rel="stylesheet" href="' + grunt.filerev.summary['dist/styles/vendor.min.css'].replace('dist/', '') + '">\n' +
                             '<link rel="stylesheet" href="' + grunt.filerev.summary['dist/styles/app.min.css'].replace('dist/', '') + '">\n';
+                        */
+                       
+                        var js = '<script src="scripts/build.js"></script>\n';
+                        var css = 
+                            '<link rel="stylesheet" href="styles/vendor.min.css">\n' +
+                            '<link rel="stylesheet" href="styles/app.min.css">\n';
 
                         //replace the script includes with the production ones
                         stringToReplace = /<\!-- build:js\(app\) --\>(.|\n)*?<\!-- endbuild --\>/gi;
@@ -169,7 +177,7 @@ module.exports = function(grunt) {
         'copy:main',
         'concat',
         'cssmin',
-        'filerev',
+        //'filerev',
         'copy:indexFile'
     ]);
 };

@@ -27,6 +27,7 @@
     <script src="lib/redactor/plugins/fontcolor.js"></script>
     <script src="lib/redactor/plugins/fullscreen.js"></script>
     <script src="lib/redactor/plugins/codemirror.js"></script>
+    <script src="lib/redactor/plugins/esimageedit.js"></script>
     <script src="plugins/servershim.js"></script>
     <script src="plugins/esplugin.js"></script>
     <!-- endbuild -->
@@ -64,7 +65,18 @@
             formattingAdd: formattingConfig,
             fullscreen: true,
             focus: true,
-            plugins: ['table', 'video', 'esImageManager', 'esFileManager', 'fontsize', 'fontfamily', 'fontcolor', 'ESPlugin', 'fullscreen']
+            plugins: [
+                'table', 
+                'video', 
+                'esImageManager', 
+                'esFileManager', 
+                'fontsize', 
+                'fontfamily', 
+                'fontcolor', 
+                'ESPlugin', 
+                'ESImageEdit',
+                'fullscreen'
+            ]
         });
     });
     </script>
