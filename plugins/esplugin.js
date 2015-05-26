@@ -77,7 +77,7 @@ var ESPluginBridge = (function (RD, console, window) {
                 window.external[methodName](params) :
                 window.external[methodName]();
         } catch(e) {
-            return window.alert('no method `' + methodName + '` is registered on server');
+            window.alert(e);
         }
     };
 
