@@ -30,6 +30,7 @@
 .redactor-esimage-image-url button {
     height: 38px;
     margin-left:5px;
+    width: 12%;
 }
 .redactor-esimage-image-url .or-separator {
     padding:5px 0;

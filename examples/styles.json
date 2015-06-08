@@ -1,0 +1,17 @@
+[
+   {
+      "tag":"span",
+      "title":"Out of stock",
+      "class":"out-of-stock"
+   },
+   {
+      "tag":"span",
+      "title":"In stock",
+      "class":"in-stock"
+   },
+   {
+      "tag":"p",
+      "title":"section title",
+      "class":"section-title"
+   }
+]

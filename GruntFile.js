@@ -74,7 +74,8 @@ module.exports = function(grunt) {
         copy: {
             main: {
                 files: [
-                    {cwd: 'styles', src: 'fonts/**', dest: 'dist/', expand: true}
+                    {cwd: 'styles', src: 'fonts/**', dest: 'dist/', expand: true},
+                    {src: 'examples/**', dest: 'dist/', expand: true}
                     //{src: 'build.js', dest: 'dist/scripts/', isFile: true, expand: true}                    
                 ]
             },
