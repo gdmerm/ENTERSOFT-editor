@@ -63,7 +63,7 @@
     position:relative;
 }
 .redactor-esimageedit-preview-pane figure > img {
-    max-width: 260px;
+    min-width: 260px;
 }
 .redactor-esimageedit-preview-pane figure > div {
     height: 25px;
