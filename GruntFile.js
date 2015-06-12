@@ -83,18 +83,19 @@ module.exports = function(grunt) {
                 options: {
                     process: function (content, srcpath) {
                         var stringToReplace; 
+			
+			/*
                         var js = 
                             '<script src="' + grunt.filerev.summary['dist/scripts/build.js'].replace('dist/', '') + '"></script>\n';
                         var css = 
                             '<link rel="stylesheet" href="' + grunt.filerev.summary['dist/styles/vendor.min.css'].replace('dist/', '') + '">\n' +
                             '<link rel="stylesheet" href="' + grunt.filerev.summary['dist/styles/app.min.css'].replace('dist/', '') + '">\n';
+			*/
                        
-			/*
                         var js = '<script src="scripts/build.js"></script>\n';
                         var css = 
                             '<link rel="stylesheet" href="styles/vendor.min.css">\n' +
                             '<link rel="stylesheet" href="styles/app.min.css">\n';
-			*/
 
                         //replace the script includes with the production ones
                         stringToReplace = /<\!-- build:js\(app\) --\>(.|\n)*?<\!-- endbuild --\>/gi;
@@ -178,7 +179,7 @@ module.exports = function(grunt) {
         'copy:main',
         'concat',
         'cssmin',
-        'filerev',
+        //'filerev',
         'copy:indexFile'
     ]);
 };

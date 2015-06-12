@@ -129,6 +129,12 @@ var ESPluginBridge = (function (RD, console, window) {
         this.invokeServerMethod = ESPlugin.invokeServerMethod;
 
         /**
+         * cache temporarily the content of the editor
+         * @type {String}
+         */
+        this.htmlbuffer = null;
+
+        /**
          * update the list of active instances that use the plugin
          * @param {jQueryNodeReference} instance [description]
          */
@@ -239,8 +245,14 @@ var ESPluginBridge = (function (RD, console, window) {
          * @return {string} The raw html content
          */
         getContent: function getHtml() {
-            this.ESPlugin.log(this.code.get());
-            return this.code.get();
+            var editorContent;
+            if (this.ESPlugin.htmlbuffer) {
+                editorContent = this.ESPlugin.htmlbuffer;
+            } else {
+                editorContent = this.code.get();
+            }
+            console.log('got content: ', editorContent);
+            return editorContent;
         },
 
         /**
@@ -250,7 +262,10 @@ var ESPluginBridge = (function (RD, console, window) {
          * @param {string} content
          */
         setContent: function setContent(content) {
+            this.ESPlugin.htmlbuffer = content;
             this.code.set(content);
+            var self = this;
+            setTimeout(function () { self.ESPlugin.htmlbuffer = null; }, 16);
         },
 
         /**
