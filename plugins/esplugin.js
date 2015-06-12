@@ -299,12 +299,11 @@ var ESPluginBridge = (function (RD, console, window) {
          */
         getContent: function getHtml() {
             var editorContent;
-            if (this.ESPlugin.htmlbuffer) {
+            if (this.ESPlugin.htmlbuffer !== null) {
                 editorContent = this.ESPlugin.htmlbuffer;
             } else {
                 editorContent = this.code.get();
             }
-            console.log('got content: ', editorContent);
             return editorContent;
         },
 
