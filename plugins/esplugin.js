@@ -130,7 +130,60 @@ var ESPluginBridge = (function (RD, console, window) {
 
         /**
          * cache temporarily the content of the editor
-         * @type {String}
+         * @type {string|null}
+         *
+         * @description
+         * It seems that redactor is using 15ms timeouts when setting content.
+         * This means that if getContent() is called 15ms or later AFTER a setContent,
+         * then the returned content is the content the user sees on his screen.
+         *
+         * =====================================================================
+         * Case A: SetContent is followed by a getContent AFTER 15ms or more
+         * =====================================================================
+         * 
+         *                       15ms      30ms
+         *                    |-------|xxxxx|
+         * setContent('hello')              --> this.code.get() // logs 'hello'
+         * 
+         *         //- Schema a. `getContent` is called after 15ms or more -//
+         *
+         * But if a getContent() is called BEFORE this 15ms time expires, then the content
+         * is not the same as the content that was passed to the setContent() method. It actually
+         * is the content of the current editor window which is still untouched since 
+         * redactor will update itself NOT LATER than this 15ms window of time.
+         *
+         * ======================================================================
+         * Case B: SetContent is followed by a getContent WITHIN the 15ms window
+         * ======================================================================
+         * 
+         * Assuming that at some point in time the current redactor html content is 
+         * 
+         * CurrentHtmlContent = 'Hello '
+         * 
+         *                    0            4ms                    15ms
+         *                    |------------||---------------------|
+         *                    0            4ms                    X redactor will update here.
+         *                    
+         * setContent('hello George') --> this.code.get() // logs 'hello ' because redactor has not updated yet
+         * 
+         *        //- Schema b. `this.code.get()` is called sooner than the 15ms window -//
+         *
+         * ===================================================================
+         * THE SOLUTION
+         * ===================================================================
+         * We use an instance property to cache the value which is set to the editor.
+         * Once the editor finshes setting this value (after 15ms have passed), then
+         * we reset this value to `null`. 
+         *
+         * IF a getContent is called prior to these 15ms time frame, then the value returned by
+         * getContent() is the cached property's value and NOT the native code.get() redactor
+         * method.
+         *
+         * Check the method stubs for getContent(), setContent() below to see the implementation.
+         *
+         * NOTE:
+         * This solution was proposed by Alex since his .NET backend seems to be making rapid set, get
+         * calls. Blame has been appointed. ;)
          */
         this.htmlbuffer = null;
 
